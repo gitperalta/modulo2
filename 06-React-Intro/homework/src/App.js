@@ -10,16 +10,14 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Nav />
+        <Nav/>
+        <SearchBar onSearch={(ciudad) => alert(ciudad)} />
       </div>
       <hr />
       <div>
-        <SearchBar onSearch={(ciudad) => alert(ciudad)} />
-      </div>
-      <br />
-      <div className="card">
         <Cards cities={data} />
       </div>
+      <hr />
     </div>
   );
 }

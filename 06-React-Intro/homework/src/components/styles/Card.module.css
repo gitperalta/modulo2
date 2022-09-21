@@ -1,12 +1,19 @@
+.titulo {
+  display: flex;
+}
+
 .city {
   margin: auto;
+  font-size: 25px;
 }
 
 .btn {
+  margin-top: 5px;
+  margin-right: 5px;
+  justify-content: flex-end;
   background-color: red;
   border-radius: 5px;
   color: aliceblue;
-  margin-left: 150px;
 }
 
 .btn:hover {
@@ -16,8 +23,7 @@
 
 .temperatures {
   display: flex;
-  flex-direction: row;
-  align-content: space-around;
+  justify-content: space-around;
 }
 
 .card {
@@ -28,10 +34,7 @@
   border: 2px solid gray;
   border-radius: 10px;
   height: 150px;
-}
-
-.imagen {
-  margin: auto;
+  background-color: skyblue;
 }
 
 .min {

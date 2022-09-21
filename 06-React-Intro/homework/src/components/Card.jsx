@@ -5,12 +5,12 @@ export default function Card(props) {
   // acá va tu código
   return (
     <div className={styles.card}>
-      <h4 className={styles.city}>
-        {props.name}
+      <div className={styles.titulo}>
+        <span className={styles.city}>{props.name}</span>
         <button onClick={props.onClose} className={styles.btn}>
           X
         </button>
-      </h4>
+      </div>
       <div className={styles.temperatures}>
         <div className={styles.min}>
           <p>Min</p>
@@ -20,11 +20,13 @@ export default function Card(props) {
           <p>Max</p>
           <p>{props.max}</p>
         </div>
-        <img
-          className={styles.imagen}
-          src={`http://openweathermap.org/img/wn/${props.img}@2x.png`}
-          alt={"img"}
-        />
+        <div>
+          <img
+            className={styles.imagen}
+            src={`http://openweathermap.org/img/wn/${props.img}@2x.png`}
+            alt={"img"}
+          />
+        </div>
       </div>
     </div>
   );
