@@ -1,0 +1,43 @@
+.city {
+  margin: auto;
+}
+
+.btn {
+  background-color: red;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-left: 150px;
+}
+
+.btn:hover {
+  color: red;
+  background-color: aliceblue;
+}
+
+.temperatures {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-content: center;
+  border: 2px solid gray;
+  border-radius: 10px;
+  height: 150px;
+}
+
+.imagen {
+  margin: auto;
+}
+
+.min {
+  margin: auto;
+}
+
+.max {
+  margin: auto;
+}
