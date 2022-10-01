@@ -1,6 +1,6 @@
 ## React Hooks Timer App
 
-Haremos una App sencilla, utilizando los nuevos features de React, __Hooks__, que nos permiten el uso de manejos de estados y llevar a cabo efectos secundarios en nuestros componentes funcionales.
+Haremos una App sencilla, utilizando los nuevos features de React, **Hooks**, que nos permiten el uso de manejos de estados y llevar a cabo efectos secundarios en nuestros componentes funcionales.
 
 Nuestra App sera un Contador y Cuenta regresiva. Podremos cambiar entre ambos y escribir una cantidad de segundos para la cuentra regresiva.
 
@@ -17,26 +17,18 @@ Ejecutamos `npm install` en la consola para instalar las dependencias, una vez i
 Comenzamos a crear nuestro HTML que mostrara nuestro componente.
 
 ```javascript
-import React from 'react';
+import React from "react";
 
 const Timer = () => {
   return (
     <div className="app">
-      <div className="time">
-        segundos
-      </div>
+      <div className="time">segundos</div>
       <div className="row">
-        <button className="button-primary">
-          Inicio
-        </button>
-        <button className="button-secondary">
-          Reset
-        </button>
+        <button className="button-primary">Inicio</button>
+        <button className="button-secondary">Reset</button>
       </div>
-      <button className="button">
-          Contador
-      </button>
-      <input type="number" placeholder="Ingresa Segundos" autoComplete="off"/>
+      <button className="button">Contador</button>
+      <input type="number" placeholder="Ingresa Segundos" autoComplete="off" />
     </div>
   );
 };
@@ -61,8 +53,9 @@ Ahora que tenemos nuestra estructura casi lista podemos comenzar a agregar el Ho
 Con la version 16.8 de React, los componentes funcionales tienen la habilidad de manejar ´state´ y ´life cycle methods´ que antes podiamos lograrlo solo con componentes de Clase. Comenzamos con ´useState´. Lo importamos en nuestro componente.
 
 ```javascript
-import React, { useState } from 'react';
+import React, { useState } from "react";
 ```
+
 Como vimos anteriormente, useState es una funcion que nos devuelve un array con dos elementos. Nuestro primer elemento sera nuestro `state` y el segundo es el metodo para mutar el state. Usamos destructurion para separar cada elemnto del array. En nuestra App tendremos 3 estados diferentes:
 
 1- Nuestros segundos, los guardaremos en un state para poder mutarlos.
@@ -88,7 +81,6 @@ Como vemos, a cada state le pasamos nuestro valor inicial como parametro a nuest
 ### Paso 4
 
 Comencemos a pasarle los valores iniciales del state a nuestro HTML. En lugar de pasar a mano segundos. Pasamos nuestro state `segundos`, en el boton Inicio, usamos `activo` para cambiar entre Inicio y Pausa, tambien usaremos ese state para cambiar las clases. Por ultimo en el boton `Contador` y en nuestro imput usamos el state `tipo` para mostrar el input si mi `tipo` es 'Cuenta Regresiva'
-
 
 ```javascript
 ...
@@ -123,6 +115,7 @@ function toggle() {
   setActivo(!activo);
 }
 ```
+
 Aca estamos llamando a la function setActivo y le pasamos nuestro nuevo estado, en este caso sera el valor contrario que tenca `activo` en ese momento.
 Agregamos una funcion para resetear nuestro state `segundos` y `activo`. La llamamos reset.
 
@@ -132,12 +125,13 @@ function reset() {
   setActivo(false);
 }
 ```
+
 Al ejecutarse esta funcion volvemos a nuestros valores iniciales. Por ultimo, una funcion para cambiar entre 'Contador' y 'Cuenta Regresiva'.
 
 ```javascript
 function cambioTipo() {
-    if(tipo === 'Contador') setTipo('Cuenta Regresiva')
-    if(tipo === 'Cuenta Regresiva') setTipo('Contador')
+  if (tipo === "Contador") setTipo("Cuenta Regresiva");
+  if (tipo === "Cuenta Regresiva") setTipo("Contador");
 }
 ```
 
@@ -173,12 +167,12 @@ Iniciamos nuestro Timer con el Hook `useEffect`. Como vimos anteriormente, useEf
 Lo importamos como hicimos con useState. `useEffect` recibe un callback como primer parametro. El segundo parametro que recibe es un array con sus `dependencias`, es decir que cuando esos parametros no cambien, nuestro Hook no volvera a ejecutarse.
 Para nuestro contador usaremos el metodo `setInterval`. En lugar de iniciar nuestro Contador en la funcion toggle, usaremos `useEffect` para saber cuando `activo` es true para iniciarlo.
 
-*`setInterval`: nos permite ejecutar una determinada función o bloque de código cada cierto intervalo de tiempo definido en milisegundos. Esto se va a ejecutar hasta el momento en que se llamé al método `clearInterval`*
+_`setInterval`: nos permite ejecutar una determinada función o bloque de código cada cierto intervalo de tiempo definido en milisegundos. Esto se va a ejecutar hasta el momento en que se llamé al método `clearInterval`_
 
 Importar primero `useEffect`
 
 ```javascript
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 ```
 
 Luego implementarlo dentro de Timer:
@@ -200,6 +194,7 @@ Luego implementarlo dentro de Timer:
 
 ...
 ```
+
 En primer lugar, inicializamos un nuevo intervalo con el valor null. Luego, detectamos si `activo` es true. Si es así, asignamos la variable de intervalo creada previamente a un nuevo intervalo que se dispara cada 1 segundo. Dentro del intervalo es donde incrementamos el valor de los segundos en uno.
 
 Si el valor `activo` es falso, entonces estamos limpiando el intervalo . También estamos devolviendo clearInterval fuera del método useEffect, nuevamente, para limpiar después de nosotros mismos. Esto es equivalente a llamar a componentWillUnmount en un componente de Clase.
@@ -213,7 +208,7 @@ Para terminar agregamos la funcionalidad de Cuenta Regresiva. Usaremos el Hook `
 Importar primero `useRef`:
 
 ```javascript
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 ```
 
 Luego implementarlo dentro de Timer:
@@ -223,6 +218,7 @@ Luego implementarlo dentro de Timer:
 const myRef = useRef(null);
 ...
 ```
+
 Agregamos la funcionalidad para cambiar nuestros segundos al cambiar el valor en el input:
 
 ```javascript
@@ -282,5 +278,5 @@ Con esto tendriamos nuestra pequeña App usando los Hooks de React!
 
 ### Extra
 
-* Al hacer click en el botón de `RESET` que el valor del input de la cuenta regresiva también vuelva a cero
-* Evitar que en la Cuenta Regresiva se muestren números negativos
+- Al hacer click en el botón de `RESET` que el valor del input de la cuenta regresiva también vuelva a cero
+- Evitar que en la Cuenta Regresiva se muestren números negativos
